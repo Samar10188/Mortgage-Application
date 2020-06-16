@@ -1,0 +1,341 @@
+<div class="cust-body mt-3 pt-3">
+  <form [formGroup]="customerForm">
+    <div class="form-row">
+      <div class="col-md-2 mb-3">
+        <label for="date">Date</label>
+        <input type="date" formControlName="date" class="form-control" id="date" placeholder="Date">
+        <span class="help-block" *ngIf="this.customerForm.get('date').errors?.required &&
+            this.customerForm.get('date').touched">
+          Date is required
+        </span>
+      </div>
+
+      <div class="col-md-4 mb-8">
+        <label for="custName">Customer Name</label>
+        <input type="text" formControlName="custName" class="form-control" id="custName" placeholder="FullName"
+          required>
+        <span class="help-block" *ngIf="this.customerForm.get('custName').errors?.required &&
+            this.customerForm.get('custName').touched">
+          Customer FullName is required
+        </span>
+      </div>
+
+      <div class="col-md-2 mb-8">
+        <label>Relation</label>
+        <div>
+          <label class="radio-inline">
+            <input type="radio" value="S/O" formControlName="relation">S/O
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="D/O" formControlName="relation">D/O
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="W/O" formControlName="relation">W/O
+          </label>
+          <span class="help-block" *ngIf="this.customerForm.get('relation').errors?.required &&
+            this.customerForm.get('relation').touched">
+            Relation is required
+          </span>
+        </div>
+      </div>
+
+
+      <div class="col-md-3 mb-8">
+        <label for="relative">Relative Name</label>
+        <input type="text" formControlName="relative" class="form-control" id="relative" placeholder="Relative Name">
+        <span class="help-block" *ngIf="this.customerForm.get('relative').errors?.required &&
+            this.customerForm.get('relative').touched">
+          Relative name is required
+        </span>
+      </div>
+
+      <div class="col-md-3 mb-8">
+        <label for="district">District</label>
+        <input type="text" formControlName="district" class="form-control" id="district" placeholder="district">
+        <span class="help-block" *ngIf="this.customerForm.get('district').errors?.required &&
+            this.customerForm.get('district').touched">
+          District Name is required
+        </span>
+      </div>
+
+      <div class="col-md-3 mb-8">
+        <label for="village">Village</label>
+        <input type="text" formControlName="village" class="form-control" id="village" placeholder="village">
+        <span class="help-block" *ngIf="this.customerForm.get('village').errors?.required &&
+            this.customerForm.get('village').touched">
+          Village Name is required
+        </span>
+      </div>
+
+      <div class="col-md-3 mb-8">
+        <label for="phone">Phone No</label>
+        <input type="text" formControlName="phone" class="form-control" id="phone" placeholder="phone">
+        <span class="help-block" *ngIf="this.customerForm.get('phone').errors?.required &&
+            this.customerForm.get('phone').touched">
+          Phone No is required
+        </span>
+      </div>
+    </div>
+    <br />
+    <div class="form-column">
+      <h3
+        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-style: inherit; font-size: 20px;">
+        Ornament Details</h3>
+      <div class="form-control-right">
+        <div>
+          <button type='button' class="btn btn-primary d-flex justify-content-lg-right"
+            (click)="addOrnamentButtonClick()" [disabled]="customerForm.get('ornaments').invalid" title="Add ornament">
+            Add Ornament
+          </button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div formArrayName="ornaments">
+
+      <div class="form-row" *ngFor="let ornam of this.customerForm.get('ornaments').controls; let i = index"
+        formGroupName="{{i}}">
+        <br />
+
+        <div class="col-md-1 mb-3">
+          <label [id]="'metal'+i">Choose Metal</label>
+          <select class="form-control" [id]="'metal'+i" formControlName="metal">
+            <!-- (change)="onSelect($event.target.value)"> -->
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+          </select>
+          <span class="help-block" *ngIf="ornam.get('metal').errors?.required &&
+                                                    ornam.get('metal').touched">
+            Metal is required
+          </span>
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'product'+i">
+            Product
+          </label>
+          <input type="text" class="form-control" [id]="'product'+i" formControlName="ornament"
+            placeholder="Ring, Chain, etc.." required>
+          <span class="help-block" *ngIf="ornam.get('ornament').errors?.required &&
+                                                                      ornam.get('ornament').touched">
+            Product Name is required
+          </span>
+        </div>
+
+        <div class="col-md-2 mb-8">
+
+          <label [attr.for]="'weight'+i">
+            Weight
+          </label>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" [id]="'weight'+i" formControlName="weight"
+             (change)="productPriceCalculation()" [(ngModel)]="itemWeight" placeholder="In grams">
+            <div class="input-group-append">
+              <div class="input-group-text">gram</div>
+            </div>
+            <span class="help-block" *ngIf="ornam.get('weight').errors?.required &&
+                                              ornam.get('weight').touched">
+              Weight is required
+            </span>
+          </div>
+        </div>
+        <br />
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'price'+i">
+            Metal Price
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'price'+i" formControlName="priceOfMetal"
+            (change)="productPriceCalculation(i)" [(ngModel)]="metalPrice" placeholder="In Rupees">
+            <!-- placeholder="In Rupees" [ngModel]="metalPrice" -->
+            <span class="help-block" *ngIf="ornam.get('priceOfMetal').errors?.required && 
+          ornam.get('priceOfMetal').touched">
+              Metal Price is required
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'charges'+i">
+            Labour charge
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'charges'+i" formControlName="labourCharge"
+            (change)="productPriceCalculation(i)" [(ngModel)]="labourCharge" placeholder="In Rupees">
+            <span class="help-block" *ngIf="ornam.get('labourCharge').errors?.required &&
+                                        ornam.get('labourCharge').touched">
+              Labour charge is required
+            </span>
+          </div>
+          <br />
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'rupees'+i">
+            Rupees
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'rupees'+i" formControlName="rupees"
+              [(ngModel)]="productPrice" placeholder="In Rupees">
+            <span class="help-block" *ngIf="ornam.get('rupees').errors?.required &&
+                                        ornam.get('rupees').touched">
+              Rupees is required
+            </span>
+          </div>
+          <br />
+        </div>
+
+        
+
+        <div class="col-md-1 mt-4 pt-2 pl-4" *ngIf="customerForm.get('ornaments').length>1">
+          <button type="button" class="btn btn-danger btn-sm" title="delete ornament"
+            (click)="removeOrnamentButtonClick(i)">
+            <i class="glyphicon glyphicon-plus"></i>Delete
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-control-right">
+      <div>
+        <button type='button' class="btn btn-primary d-flex justify-content-lg-right"
+          (click)="addSoldMetalButtonClick()" [disabled]="customerForm.get('soldMetal').invalid" title="Add ornament">
+          Add Sold Metal
+        </button>
+      </div>
+    </div>
+    <br>
+    <div formArrayName="soldMetal">
+
+      <div class="form-row" *ngFor="let ornam of this.customerForm.get('soldMetal').controls; let j = index"
+        formGroupName="{{j}}">
+        <br />
+
+        <div class="col-md-2 mb-3">
+          <label [id]="'metal'+j">Choose Metal</label>
+          <select class="form-control" [id]="'metal'+j" formControlName="metal">
+            <!-- (change)="onSelect($event.target.value)"> -->
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+          </select>
+          <span class="help-block" *ngIf="ornam.get('metal').errors?.required &&
+                                                      ornam.get('metal').touched">
+            Metal is required
+          </span>
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'weight'+j">
+            Weight
+          </label>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" [id]="'weight'+j" formControlName="weight" placeholder="In grams">
+            <div class="input-group-append">
+              <div class="input-group-text">gram</div>
+            </div>
+            <span class="help-block" *ngIf="ornam.get('weight').errors?.required &&
+                                                ornam.get('weight').touched">
+              Weight is required
+            </span>
+          </div>
+        </div>
+        <br />
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'percent'+j">
+            Percent
+          </label>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" [id]="'percent'+j" formControlName="percent"
+              placeholder="In grams">
+            <div class="input-group-append">
+              <div class="input-group-text">%</div>
+            </div>
+            <span class="help-block" *ngIf="ornam.get('percent').errors?.required &&
+                                                ornam.get('percent').touched">
+              Percent is required
+            </span>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-3 mt-3">
+          <div class="input-group">
+          <label [attr.for]="'percent'+j">
+            Percent
+          </label>
+          <input type="number" class="form-control" [id]="'percent'+j" formControlName="percent" placeholder="In grams">
+          <div class="input-group-append">
+            <div class="input-group-text">%</div>
+          </div>
+          <span class="help-block" *ngIf="ornam.get('percent').errors?.required &&
+                                                ornam.get('percent').touched">
+            Percent is required
+          </span>
+        </div>
+        </div> -->
+        <br />
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'price'+j">
+            Metal Price
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'price'+j" formControlName="priceOfMetal"
+              placeholder="In Rupees">
+            <!-- placeholder="In Rupees" [ngModel]="metalPrice" -->
+            <span class="help-block" *ngIf="ornam.get('priceOfMetal').errors?.required && 
+                                                ornam.get('priceOfMetal').touched">
+              Metal Price is required
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'amount'+j">
+            Amount
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'amount'+j" formControlName="amount"
+              placeholder="In Rupees">
+            <span class="help-block" *ngIf="ornam.get('amount').errors?.required &&
+                                          ornam.get('amount').touched">
+              Amount is required
+            </span>
+          </div>
+          <br />
+        </div>
+        <div class="col-md-1 mt-4 pt-2 pl-4" *ngIf="customerForm.get('soldMetal').length>0">
+          <button type="button" class="btn btn-danger btn-sm" title="delete ornament"
+            (click)="removeSoldMetalButtonClick(i)">
+            <i class="glyphicon glyphicon-plus"></i>Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-8">
+      <div class="col-ornament">
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()"
+          [disabled]="!customerForm.valid">Submit</button>
+      </div>
+    </div>
+    <br>
+  </form>
+</div>

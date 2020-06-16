@@ -1,0 +1,30 @@
+<!-- <form class="form-signin"> -->
+ <div class="form-signin">
+  <div class="panel-body">
+    <img class="logo" src="/assets/images/logo-large.JPG">
+    <h1 class="h1 mb-3 font-weight-normal">Mortgage Application</h1>
+  </div>
+  <br>
+  <br>
+  <div class="form-label-group">
+    <input type="text" id="userName" class="form-control" placeholder="Username" required
+      autofocus [(ngModel)]="myData.username" >
+    <label for="userName">Email address</label>
+  </div>
+
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+      required [(ngModel)]="myData.password" >
+    <label for="inputPassword">Password</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block"  type="button" (click)="loginUser()" >Sign in</button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2025</p>
+<!-- </form> -->
+</div> 

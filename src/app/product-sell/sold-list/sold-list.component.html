@@ -1,0 +1,97 @@
+        <!-- <div class="col-md-1 mb-3">
+          <label [id]="'metal'+i">Choose Metal</label>
+          <select class="form-control" [id]="'metal'+i" [(ngModel)]="metal[0]">
+            (change)="onSelect($event.target.value)">
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+          </select>
+          <span class="help-block" *ngIf="ornam.get('metal').errors?.required &&
+                                                            ornam.get('metal').touched">
+                    Metal is required
+                  </span>
+        </div> -->
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'product'+i">
+            Product
+          </label>
+          <input type="text" class="form-control" [id]="'product'+i" [(ngModel)]="ornament[0]" placeholder="Ring, Chain, etc.."
+            required>
+          <!-- <span class="help-block" *ngIf="ornam.get('ornament').errors?.required &&
+                                                                              ornam.get('ornament').touched">
+                    Product Name is required
+                  </span> -->
+        </div>
+        <!-- {{ornament[0]}} -->
+
+        <div class="col-md-2 mb-8">
+
+          <label [attr.for]="'weight'+i">
+            Weight
+          </label>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" [id]="'weight'+i" ng-Model="weight[0]" placeholder="In grams">
+            <div class="input-group-append">
+              <div class="input-group-text">gram</div>
+            </div>
+            <!-- <span class="help-block" *ngIf="ornam.get('weight').errors?.required &&
+                                                      ornam.get('weight').touched">
+                      Weight is required
+                    </span> -->
+          </div>
+        </div>
+        <br />
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'price'+i">
+            Metal Price
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'price'+i" ng-Model="priceOfMetal[0]" placeholder="In Rupees">
+            <!-- placeholder="In Rupees" [ngModel]="metalPrice" -->
+            <!-- <span class="help-block" *ngIf="ornam.get('priceOfMetal').errors?.required && 
+                  ornam.get('priceOfMetal').touched">
+                      Metal Price is required
+                    </span> -->
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'charges'+i">
+            Labour charge
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'charges'+i" ng-Model="labourCharge[0]" placeholder="In Rupees">
+            <!-- <span class="help-block" *ngIf="ornam.get('labourCharge').errors?.required &&
+                                                ornam.get('labourCharge').touched">
+                      Labour charge is required
+                    </span> -->
+          </div>
+          <br />
+        </div>
+
+        <div class="col-md-2 mb-8">
+          <label [attr.for]="'rupees'+i">
+            Rupees
+          </label>
+          <div class="input-group mb-4">
+            <div class="input-group-append">
+              <div class="input-group-text">₹</div>
+            </div>
+            <input type="number" class="form-control" [id]="'rupees'+i" ng-Model="rupees[0]" placeholder="In Rupees">
+            <!-- <span class="help-block" *ngIf="ornam.get('rupees').errors?.required &&
+                                                ornam.get('rupees').touched">
+                      Rupees is required
+                    </span> -->
+          </div>
+          <br />
+        </div>
+
+        <div>
+          <button type="button" (click)="onSubmit()"></button>
+        </div>

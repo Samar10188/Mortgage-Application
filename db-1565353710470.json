@@ -1,0 +1,235 @@
+{
+  "customers": [
+    {
+      "id": 2,
+      "date": "2019-04-09",
+      "custName": "Samarpit Verma",
+      "relation": "S/O",
+      "relative": "R K Verma",
+      "village": "malawan",
+      "phone": "8899822074",
+      "ornaments": [
+        {
+          "subDate": "2018-01-01",
+          "ornament": "Chain",
+          "metal": "Gold",
+          "weight": 10,
+          "rupees": 10000,
+          "deposit": [
+            {
+              "depositDate": "2018-06-30",
+              "depositAmount": 1000,
+              "actualAmount": 10000,
+              "interest": 1200,
+              "remainInterest": 200,
+              "totalAmount": 10000
+            },
+            {
+              "depositDate": "2018-12-31",
+              "depositAmount": 5000,
+              "actualAmount": 6226.666666666666,
+              "interest": 1226.6666666666667,
+              "remainInterest": 0,
+              "totalAmount": 6226.666666666666
+            },
+            {
+              "depositDate": "2019-03-19",
+              "depositAmount": 1000,
+              "actualAmount": 5550.453333333333,
+              "interest": 323.78666666666663,
+              "remainInterest": 0,
+              "totalAmount": 5550.453333333333
+            }
+          ]
+        },
+        {
+          "subDate": "2018-07-01",
+          "ornament": "Ring",
+          "metal": "Gold",
+          "weight": 8,
+          "rupees": 15000,
+          "deposit": [
+            {
+              "depositDate": "2018-12-31",
+              "depositAmount": 5000,
+              "actualAmount": 9990,
+              "interest": -10,
+              "remainInterest": 0,
+              "totalAmount": 9990
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "date": "2018-02-02",
+      "custName": "Arpit Verma",
+      "relation": "S/O",
+      "relative": "R K Verma",
+      "village": "malawan",
+      "phone": "7786789098",
+      "ornaments": [
+        {
+          "subDate": "2018-03-02",
+          "ornament": "chain",
+          "metal": "Gold",
+          "weight": 15,
+          "rupees": 25000,
+          "deposit": [
+            {
+              "depositDate": "2018-10-10",
+              "depositAmount": 10000,
+              "actualAmount": 17000,
+              "interest": 2000,
+              "remainInterest": 0,
+              "totalAmount": 17000
+            },
+            {
+              "depositDate": "2019-05-17",
+              "depositAmount": 500,
+              "actualAmount": 17000,
+              "interest": 2482,
+              "remainInterest": 1982,
+              "totalAmount": 18982
+            }
+          ]
+        },
+        {
+          "subDate": "2018-07-05",
+          "ornament": "ring",
+          "metal": "Gold",
+          "weight": 5,
+          "rupees": 5000,
+          "deposit": [
+            {
+              "depositDate": "2019-07-06",
+              "depositAmount": 2000,
+              "actualAmount": 2983.333333333333,
+              "interest": -16.666666666666668,
+              "remainInterest": 0,
+              "totalAmount": 2983.333333333333
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "date": "2019-01-01",
+      "custName": "Richa Verma",
+      "relation": "D/O",
+      "relative": "R K Verma",
+      "village": "Malawan",
+      "phone": "9643439440",
+      "ornaments": [
+        {
+          "subDate": "2019-01-01",
+          "ornament": "chain",
+          "metal": "Gold",
+          "weight": 10,
+          "rupees": 15000
+        },
+        {
+          "subDate": "2019-01-01",
+          "ornament": "ring",
+          "metal": "Gold",
+          "weight": 5,
+          "rupees": 10000,
+          "deposit": [
+            {
+              "depositDate": "2019-01-31",
+              "depositAmount": 1000,
+              "actualAmount": 9250,
+              "interest": 250,
+              "remainInterest": 0,
+              "totalAmount": 9250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "date": "2019-02-06",
+      "custName": "shalini singh",
+      "relation": "D/O",
+      "relative": "Naresh Singh",
+      "village": "begulal khera",
+      "phone": "8898189991",
+      "ornaments": [
+        {
+          "subDate": "2019-02-06",
+          "ornament": "bracelet",
+          "metal": "Gold",
+          "weight": 8,
+          "rupees": 14000,
+          "deposit": []
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "date": "2019-03-01",
+      "custName": "nishant sharma",
+      "relation": "S/O",
+      "relative": "V K Sharma",
+      "village": "Kota",
+      "phone": "9765432879",
+      "ornaments": [
+        {
+          "subDate": "2019-03-01",
+          "ornament": "chain",
+          "metal": "Gold",
+          "weight": 15,
+          "rupees": 25000,
+          "deposit": []
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "date": "2019-03-15",
+      "custName": "Vikil Newton",
+      "relation": "S/O",
+      "relative": "Rakesh Newton",
+      "village": "Etah",
+      "phone": "7898865434",
+      "ornaments": [
+        {
+          "subDate": "2019-03-15",
+          "ornament": "ring",
+          "metal": "Gold",
+          "weight": 4,
+          "rupees": 5000,
+          "deposit": []
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "date": "2019-04-01",
+      "custName": "Arun Singh",
+      "relation": "S/O",
+      "relative": "S P Singh",
+      "village": "Etah",
+      "phone": "9667745321",
+      "ornaments": [
+        {
+          "subDate": "2019-04-01",
+          "ornament": "ring",
+          "metal": "Gold",
+          "weight": 6,
+          "rupees": 6000,
+          "deposit": []
+        }
+      ]
+    }
+  ],
+  "auth": [
+    {
+      "username": "samar",
+      "password": "samar"
+    }
+  ]
+}
