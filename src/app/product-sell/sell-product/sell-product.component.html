@@ -129,7 +129,7 @@
           </label>
           <div class="input-group mb-3">
             <input type="number" class="form-control" [id]="'weight'+i" formControlName="weight"
-             (change)="productPriceCalculation()" [(ngModel)]="itemWeight" placeholder="In grams">
+             (change)="productPriceCalculation()" [(ngModel)]="itemWeight" placeholder="In grams" required>
             <div class="input-group-append">
               <div class="input-group-text">gram</div>
             </div>
@@ -149,7 +149,7 @@
               <div class="input-group-text">₹</div>
             </div>
             <input type="number" class="form-control" [id]="'price'+i" formControlName="priceOfMetal"
-            (change)="productPriceCalculation(i)" [(ngModel)]="metalPrice" placeholder="In Rupees">
+            (change)="productPriceCalculation(i)" [(ngModel)]="metalPrice" placeholder="In Rupees" required>
             <!-- placeholder="In Rupees" [ngModel]="metalPrice" -->
             <span class="help-block" *ngIf="ornam.get('priceOfMetal').errors?.required && 
           ornam.get('priceOfMetal').touched">
@@ -167,7 +167,7 @@
               <div class="input-group-text">₹</div>
             </div>
             <input type="number" class="form-control" [id]="'charges'+i" formControlName="labourCharge"
-            (change)="productPriceCalculation(i)" [(ngModel)]="labourCharge" placeholder="In Rupees">
+            (change)="productPriceCalculation(i)" [(ngModel)]="labourCharge" placeholder="In Rupees" required>
             <span class="help-block" *ngIf="ornam.get('labourCharge').errors?.required &&
                                         ornam.get('labourCharge').touched">
               Labour charge is required
@@ -185,7 +185,7 @@
               <div class="input-group-text">₹</div>
             </div>
             <input type="number" class="form-control" [id]="'rupees'+i" formControlName="rupees"
-              [(ngModel)]="productPrice" placeholder="In Rupees">
+              [(ngModel)]="productPrice" placeholder="In Rupees" required>
             <span class="help-block" *ngIf="ornam.get('rupees').errors?.required &&
                                         ornam.get('rupees').touched">
               Rupees is required
@@ -223,7 +223,7 @@
 
         <div class="col-md-2 mb-3">
           <label [id]="'metal'+j">Choose Metal</label>
-          <select class="form-control" [id]="'metal'+j" formControlName="metal">
+          <select class="form-control" [id]="'metal'+j" formControlName="metal" required>
             <!-- (change)="onSelect($event.target.value)"> -->
             <option value="Gold">Gold</option>
             <option value="Silver">Silver</option>
@@ -239,7 +239,7 @@
             Weight
           </label>
           <div class="input-group mb-3">
-            <input type="number" class="form-control" [id]="'weight'+j" formControlName="weight" placeholder="In grams">
+            <input type="number" class="form-control" [id]="'weight'+j" formControlName="weight" placeholder="In grams" required>
             <div class="input-group-append">
               <div class="input-group-text">gram</div>
             </div>
@@ -257,7 +257,7 @@
           </label>
           <div class="input-group mb-3">
             <input type="number" class="form-control" [id]="'percent'+j" formControlName="percent"
-              placeholder="In grams">
+              placeholder="In grams" required>
             <div class="input-group-append">
               <div class="input-group-text">%</div>
             </div>
@@ -294,7 +294,7 @@
               <div class="input-group-text">₹</div>
             </div>
             <input type="number" class="form-control" [id]="'price'+j" formControlName="priceOfMetal"
-              placeholder="In Rupees">
+              placeholder="In Rupees" required>
             <!-- placeholder="In Rupees" [ngModel]="metalPrice" -->
             <span class="help-block" *ngIf="ornam.get('priceOfMetal').errors?.required && 
                                                 ornam.get('priceOfMetal').touched">

@@ -27,9 +27,16 @@ export class AuthService {
     return this.loggedInStatus;
   }
 
-  getUserDetails(data) {
-    let url = 'http://localhost:3000/auth?username='+data.username +'&password='+data.password;
-    return this.http.get(url)
+  // authenticateUserDetails(data) {
+  //   let url = 'http://localhost:3000/auth?username='+data.username +'&password='+data.password;
+  //   return this.http.get(url)
+  //   .pipe(catchError(this.handleError));
+    
+  // }
+
+  authenticateUserDetails(data : {}) {
+    let url = 'http://localhost:3000/user/login';
+    return this.http.post<any>(url, data)
     .pipe(catchError(this.handleError));
     
   }
@@ -46,7 +53,7 @@ export class AuthService {
     } 
     else 
     {
-        console.error('Server Side Error :', errorResponse);
+        console.error('Server Side Error :', errorResponse.error.message);
     }
     return throwError('There is a problem with the service. We are notified & working on it. Please try again later.');
 }

@@ -11,6 +11,9 @@ import { catchError } from 'rxjs/operators';
 })
 export class CustomerService {
 
+    // headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('token')}`});
+    // headers = new HttpHeaders({'Content-Type': 'application/json'});
+
     baseUrl = 'http://localhost:3000/customer';
 
     constructor(private httpClient: HttpClient) {
@@ -68,11 +71,7 @@ export class CustomerService {
 
     updateCustomer(customer: ICustomer){
         let url = 'http://localhost:3000/customer/update'
-        return this.httpClient.put(url, customer, {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            })
-        })
+        return this.httpClient.put(url, customer)
             .pipe(catchError(this.handleError));
     }
 
@@ -90,6 +89,10 @@ export class CustomerService {
         let url = 'http://localhost:3000/customer/delete?_id='+id
         return this.httpClient.delete(url)
             .pipe(catchError(this.handleError));
+    }
+
+    getToken(){
+        return localStorage.getItem('token');
     }
 
 }

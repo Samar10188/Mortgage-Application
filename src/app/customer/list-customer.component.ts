@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICustomer } from './ICustomer';
 import { CustomerService } from './customer.service';
 import { Router } from '@angular/router';
+import { error } from 'util';
 
 @Component({
   selector: 'app-list-customer',
@@ -10,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class ListCustomerComponent implements OnInit {
 
-  // data: {email: "arpitkumarverma@gmail.com"};
   sortoption: string = "";
   searchTerm: string = "";
   value: any;
@@ -31,16 +31,14 @@ export class ListCustomerComponent implements OnInit {
 
               
   ngOnInit() {
-    // this.customerService.getCustomers().subscribe(listCustomers => {
-    //   this.customers = listCustomers;
-    //   (err) => {
-    //     return console.log(err);
-    //   }    
-    // })
-      this.customerService.getCustomers().subscribe(data => {
-        this.customers = data;
-        console.log("we got", data);
-      });
+    this.getCustomersData();
+  }
+
+  getCustomersData(){
+    this.customerService.getCustomers().subscribe(data => {
+      this.customers = data;
+      console.log("we got", data);
+    });
   }
 
   editButtonClick(customerId: number){
@@ -56,14 +54,12 @@ export class ListCustomerComponent implements OnInit {
   deleteButtonClick(customerId){
     this.customerService.deleteCustomer(customerId).subscribe(
       (data)=> {
-        if(data){this.value = data}
-        else{
-          console.log("no data")
-        }
-      // this.router.navigate(['home/calculation']),
-      // (err: any) => console.log(err)
+            console.log("Delete Api Response data ", data);
+            this.getCustomersData();
+          }, 
+          error => {
+            console.log("Error is :", error)
           });
-          console.log("value is", this.value);
   }
 
 }

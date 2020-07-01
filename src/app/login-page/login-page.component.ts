@@ -18,6 +18,7 @@ export class LoginPageComponent implements OnInit {
   };
   authenticate: any = null;
   headerProperty: string;
+  token: string;
   // myData: any;
   constructor(private Auth: AuthService,
     private router: Router) { }
@@ -26,52 +27,24 @@ export class LoginPageComponent implements OnInit {
     // this.Auth.getUserDetails(this.myData).subscribe(data => {
     //   console.log("we got", data);
     //   this.authenticate = data;
-      
+
     // });
   }
 
 
   loginUser() {
-    console.log("username", this.myData.username)
-    console.log("password", this.myData.password)
-    this.Auth.getUserDetails(this.myData).subscribe(data => {
+    // console.log("login details", this.myData)
+    this.Auth.authenticateUserDetails(this.myData).subscribe(data => {
       console.log("value of authenticate", data);
-      // this.authenticate = data;
-      if(data == true){
-        this.router.navigate(['home/calculation']);
-        this.Auth.setLoggedIn(true);
-      }
-      else{
-        window.alert("Wrong Credentials");
-      }
-      // this.authenticateUser()
-      });
-      // this.Auth.getUserDetails(this.myData).subscribe((res: any) =>{
-      //   this.headerProperty = res.headers.get('property name here');
-      //   // if(res){
-      //     console.log("header ", res.headers);
-      //     console.log("header property", this.headerProperty);
-      //   // }
-      // })
-
-    // if(this.authenticate == true){
-    //   this.router.navigate(['home/calculation'])
-    //   // this.Auth.setLoggedIn(true)
-    // }
-    // else{
-    //   window.alert("Wrong Credentials")
-    // }
-    // console.log(username, password);
+      localStorage.setItem("token", data.token.toString());
+      this.token = localStorage.getItem("token");
+      console.log("Token value :", this.token);
+      this.router.navigate(['home/calculation']);
+      this.Auth.setLoggedIn(true);
+    }, error => {
+      console.log("Error :", error.message);
+      window.alert("Wrong Credentials")
+    });
   }
-
-  // authenticateUser(){
-    // if(this.authenticate == true){
-    //   this.router.navigate(['home/calculation']);
-    //   this.Auth.setLoggedIn(true);
-    // }
-    // else{
-    //   window.alert("Wrong Credentials");
-    // }
-  // }
 
 }

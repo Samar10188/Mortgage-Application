@@ -17,6 +17,7 @@ const routes: Routes = [
   // { path: 'home', component: HomeComponent , canActivate: [AuthGuard], children: [
   {
     path: 'home', component: HeaderComponent, children: [
+      { path: '', redirectTo: 'calculation', pathMatch: 'full'},
       { path: 'calculation', component: CalculationComponent },
       { path: 'customers', component: ListCustomerComponent },
       { path: 'create', component: CreateCustomerComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'sell-product', loadChildren: './product-sell/product-sell.module#ProductSellModule'},
     ]
   },
+  { path: 'token-expired', component: PageNotFoundComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
